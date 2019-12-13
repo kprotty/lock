@@ -133,7 +133,7 @@ impl<T: Sized> Mutex<T> {
 
     #[inline]
     pub unsafe fn force_unlock(&self) {
-        // unlock the queue in a wait-free fashion
+        // unlock the mutex in a wait-free fashion
         let state = self.state.fetch_sub(MUTEX_LOCK, Ordering::Release);
         
         // if the queue isnt locked and theres a parked node, unpark it
