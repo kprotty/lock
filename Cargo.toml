@@ -1,0 +1,17 @@
+[package]
+name = "custom_lock"
+version = "0.1.0"
+authors = ["kprotty"]
+edition = "2018"
+
+[target.'cfg(unix)'.dependencies]
+libc = "*"
+
+[dev-dependencies]
+num_cpus = "*"
+criterion = "*"
+parking_lot = "*"
+
+[[bench]]
+name = "high_contention"
+harness = false
